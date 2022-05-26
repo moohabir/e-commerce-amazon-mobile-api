@@ -36,15 +36,17 @@ export default function App() {
 
   return (
     <div className="App">
-      {conts.map((item) => (
-        <div>
-          <img src={item.product_main_image_url} alt="" />
-          <a href={item.product_detail_url}>
-            <h1>{item.product_title}</h1>
-          </a>
-          <p>Price: ${item.app_sale_price}</p>
-        </div>
-      ))}
+      <div className="app-list">
+        {conts.map((item) => (
+          <div className="items">
+            <img src={item.product_main_image_url} alt="" />
+            <a href={item.product_detail_url}>
+              <h1>{item.product_title}</h1>
+            </a>
+            <p>Price: ${item.app_sale_price}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
