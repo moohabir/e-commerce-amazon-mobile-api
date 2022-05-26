@@ -42,7 +42,7 @@ export default function App() {
           <a href={item.product_detail_url}>
             <h1>{item.product_title}</h1>
           </a>
-          <p>Price: {item.app_sale_price}</p>
+          <p>Price: ${item.app_sale_price}</p>
         </div>
       ))}
     </div>
