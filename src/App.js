@@ -11,7 +11,7 @@ export default function App() {
       url: "https://amazon24.p.rapidapi.com/api/product",
       params: {
         categoryID: "aps",
-        keyword: "iphone",
+        keyword: "phone",
         country: "US",
         page: "1"
       },
@@ -32,7 +32,7 @@ export default function App() {
       });
   }, []);
 
-  const conts = container?.slice(0, 7);
+  const conts = container?.slice(0, 20);
 
   return (
     <div className="App">
