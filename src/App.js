@@ -8,15 +8,10 @@ export default function App() {
   useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://amazon24.p.rapidapi.com/api/product",
-      params: {
-        categoryID: "aps",
-        keyword: "phone",
-        country: "US",
-        page: "1"
-      },
+      url: "https://edamam-food-and-grocery-database.p.rapidapi.com/parser",
+      params: { ingr: "apple" },
       headers: {
-        "X-RapidAPI-Host": "amazon24.p.rapidapi.com",
+        "X-RapidAPI-Host": "edamam-food-and-grocery-database.p.rapidapi.com",
         "X-RapidAPI-Key": "bc8006d48amsh69e5064484e98b7p16d73bjsn37edd8bac393"
       }
     };
@@ -24,26 +19,24 @@ export default function App() {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
-        setContainer(response.data.docs);
+        console.log(response.data["hints"]);
+        setContainer(response.data["hints"]);
       })
       .catch(function (error) {
         console.error(error);
       });
   }, []);
 
-  const conts = container?.slice(0, 20);
+  const conts = container?.slice(0, 7);
 
   return (
     <div className="App">
       <div className="app-list">
         {conts.map((item) => (
           <div className="items">
-            <img src={item.product_main_image_url} alt="" />
-            <a href={item.product_detail_url}>
-              <h1>{item.product_title}</h1>
-            </a>
-            <p>Price: ${item.app_sale_price}</p>
+            <img src={item.food.image} alt="" />
+            <h1>{item.food.label}</h1>
+            <p>{item.food.nutrients.FAT}</p>
           </div>
         ))}
       </div>
