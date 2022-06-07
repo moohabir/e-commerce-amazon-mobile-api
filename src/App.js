@@ -5,8 +5,9 @@ import axios from "axios";
 export default function App() {
   const [container, setContainer] = useState([]);
   const [query, setQuery] = useState("");
+  const [endpoints, setEndpoints] = useState("");
 
-  useEffect(() => {
+  function getResults(query) {
     const options = {
       method: "GET",
       url: "https://edamam-food-and-grocery-database.p.rapidapi.com/parser",
@@ -26,13 +27,17 @@ export default function App() {
       .catch(function (error) {
         console.error(error);
       });
-  }, [query]);
+  }
+
+  useEffect(() => {
+    getResults(query);
+  }, [endpoints]);
 
   const conts = container?.slice(0, 7);
 
   function submitHandler(event) {
     event.preventDefault();
-    setQuery(query);
+    setEndpoints(query);
   }
 
   return (
